@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
           create: (_) => AuthService(),
         ),
         StreamProvider(
+            initialData: null,
             create: (context) => context.read<AuthService>().authStateChanges)
       ],
       child: MaterialApp(

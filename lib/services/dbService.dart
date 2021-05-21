@@ -10,14 +10,15 @@ class DBService {
   DBService({@required this.userID});
 
   List<TaskTile> taskList(QuerySnapshot snapshot) {
-    return snapshot.docs.map((doc) {
+    return snapshot.docs.map((DocumentSnapshot doc) {
       if (doc.data() == null) {
         print('NULL DATA');
         //   return Container();
       }
+      TodoTask mytodo = TodoTask.fromJson(doc.data());
       return TaskTile(
-        title: doc.data()['title'],
-        subtitle: doc.data()['category'],
+        title: mytodo.title,
+        subtitle: mytodo.category,
         id: doc.id,
       );
     }).toList();
