@@ -3,27 +3,22 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo_app/models/task.dart';
 import 'package:todo_app/services/dbService.dart';
 
 class TaskTile extends StatelessWidget {
-  String title;
-  String subtitle;
-  String id;
-  TaskTile({this.title, this.subtitle, this.id}) {
-    title ??= 'Title';
-    subtitle ??= '';
-    id ??= '';
-  }
+  final TodoTask todoTask;
+
+  TaskTile({this.todoTask});
   @override
   Widget build(BuildContext context) {
-    print('creating tile with title = $title, subtitle =$subtitle, id = $id');
     return Dismissible(
-      key: Key(this.id),
+      key: Key(this.todoTask.id),
       onDismissed: (direction) {
         print('dismissed');
         DBService myDB =
             DBService(userID: FirebaseAuth.instance.currentUser.uid);
-        myDB.deleteTodo(id);
+        myDB.deleteTodo(this.todoTask);
       },
       child: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -53,7 +48,7 @@ class TaskTile extends StatelessWidget {
                     )),
                 child: Row(
                   children: [
-                    getIconBox(subtitle),
+                    getIconBox(this.todoTask.category),
                     SizedBox(
                       width: 15,
                     ),
@@ -62,18 +57,19 @@ class TaskTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            title,
+                            this.todoTask.title ?? 'Untitled Todo',
                             style: GoogleFonts.hammersmithOne(
                                 textStyle: TextStyle(fontSize: 22)),
                           ),
                           Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: getColor(subtitle).withOpacity(0.9)),
+                                color: getColor(this.todoTask.category)
+                                    .withOpacity(0.9)),
                             child: Padding(
                               padding: const EdgeInsets.all(9.0),
                               child: Text(
-                                subtitle,
+                                this.todoTask.category,
                                 style: GoogleFonts.hammersmithOne(
                                     textStyle: TextStyle(
                                         fontSize: 17, color: Colors.white)),

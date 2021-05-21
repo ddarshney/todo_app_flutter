@@ -5,10 +5,12 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/pages/homePage.dart';
 import 'package:todo_app/pages/landingPage.dart';
 import 'package:todo_app/services/authService.dart';
+import 'package:todo_app/services/notifService.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await NotifService().init();
   runApp(MyApp());
 }
 

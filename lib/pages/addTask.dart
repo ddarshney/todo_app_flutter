@@ -155,10 +155,12 @@ class _AddTaskState extends State<AddTask> {
                       ),
                       onPressed: () async {
                         TodoTask newTodo = TodoTask(
-                            title: titleController.text.trim(),
-                            category: _selectedCategory,
-                            description: descriptionController.text.trim(),
-                            reminder: pickedTime);
+                          title: titleController.text.trim(),
+                          category: _selectedCategory,
+                          description: descriptionController.text.trim(),
+                          reminder: pickedTime,
+                          notifID: widget.myDB.getNotificationID(),
+                        );
                         widget.myDB.createTodo(newTodo);
                         Navigator.of(context).pop();
                       },
