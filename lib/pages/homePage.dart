@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.fill,
-              image: AssetImage('assets/images/background2.jpg')),
+              image: AssetImage('assets/images/background3.png')),
         ),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
