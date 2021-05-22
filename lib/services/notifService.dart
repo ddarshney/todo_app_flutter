@@ -12,12 +12,6 @@ class NotifService {
       AndroidNotificationDetails(
           'TodoApp', 'Todo App Channel', 'Todo Reminder Notifications',
           importance: Importance.high, priority: Priority.high);
-  // channelName:
-  // channelId: String,   //Required for Android 8.0 or after
-  // channelName: String, //Required for Android 8.0 or after
-  // channelDescription: String, //Required for Android 8.0 or after
-  // importance: Importance,
-  // priority: Priority
 
   static const NotificationDetails platformChannelSpecifics =
       NotificationDetails(android: androidPlatformChannelSpecifics);
@@ -50,13 +44,20 @@ class NotifService {
   }
 
   Future<void> scheduleNotification(TodoTask todo) async {
+    Duration offsetTime = DateTime.now().timeZoneOffset;
+    tz.TZDateTime scheduledTime = tz.TZDateTime.local(
+            todo.reminder.year,
+            todo.reminder.month,
+            todo.reminder.day,
+            todo.reminder.hour,
+            todo.reminder.minute)
+        .subtract(offsetTime);
     print(tz.local);
     await flutterLocalNotificationsPlugin.zonedSchedule(
         todo.notifID,
         'Reminder to complete your task',
         todo.title,
-        tz.TZDateTime(tz.local, todo.reminder.year, todo.reminder.month,
-            todo.reminder.day, todo.reminder.hour, todo.reminder.minute),
+        scheduledTime,
         platformChannelSpecifics,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,

@@ -55,6 +55,6 @@ class DBService {
           .doc(documentReference.id)
           .update({'id': documentReference.id});
     });
-    NotifService().testNotification(todo);
+    NotifService().scheduleNotification(todo);
   }
 }
