@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.fill,
-              image: AssetImage('assets/images/background3.png')),
+              image: AssetImage('assets/images/background.jpg')),
         ),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Expanded(
                     child: Container(
-                  color: Colors.grey[600].withOpacity(0.2),
+                  color: Colors.blue[400].withOpacity(0.2),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: Column(
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                             'Your Tasks',
                             style: GoogleFonts.kanit(
                                 textStyle: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.blue[2000],
                                     fontSize: 50,
                                     fontWeight: FontWeight.bold)),
                           ),
@@ -106,11 +106,11 @@ class HomePage extends StatelessWidget {
           Icons.add,
           size: 50,
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.black,
         onPressed: () async {
           showDialog(
               context: context,
-              barrierColor: Colors.white.withOpacity(0.3),
+              barrierColor: Colors.black.withOpacity(0.3),
               builder: (context) {
                 return AddTask(
                   myDB: myDB,
