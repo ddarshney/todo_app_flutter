@@ -19,14 +19,14 @@ class _AddTaskState extends State<AddTask> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   String timePickerText = 'Reminder';
-  String _selectedCategory = null;
+  String _selectedCategory;
   DateTime pickedTime;
   List<String> _categories = ['General', 'Personal', 'Work'];
   List<Color> border = [Colors.black, Colors.transparent, Colors.transparent];
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: Colors.white.withOpacity(0.5),
+      backgroundColor: Colors.white.withOpacity(0.7),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: SingleChildScrollView(
         child: ClipRRect(
@@ -183,11 +183,10 @@ class _AddTaskState extends State<AddTask> {
 }
 
 Future<DateTime> selectDateTime(BuildContext context) async {
-  return DatePicker.showDateTimePicker(context,
-      showTitleActions: true,
-      minTime: DateTime.now(),
-      maxTime: DateTime(2030), onChanged: (date) {
-    String time = DateFormat.yMMMMd().add_jm().format(date);
-    print("Changed to $time");
-  });
+  return DatePicker.showDateTimePicker(
+    context,
+    showTitleActions: true,
+    minTime: DateTime.now(),
+    maxTime: DateTime(2030),
+  );
 }

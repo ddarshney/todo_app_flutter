@@ -15,7 +15,6 @@ class TaskTile extends StatelessWidget {
     return Dismissible(
       key: Key(this.todoTask.id),
       onDismissed: (direction) {
-        print('dismissed');
         DBService myDB =
             DBService(userID: FirebaseAuth.instance.currentUser.uid);
         myDB.deleteTodo(this.todoTask);

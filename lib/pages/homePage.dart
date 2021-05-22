@@ -1,13 +1,10 @@
 import 'dart:ui';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:todo_app/models/task.dart';
 import 'package:todo_app/pages/addTask.dart';
-import 'package:todo_app/services/authService.dart';
 import 'package:todo_app/services/dbService.dart';
 import 'package:todo_app/widgets/taskTile.dart';
 
@@ -16,7 +13,6 @@ class HomePage extends StatelessWidget {
       DBService(userID: FirebaseAuth.instance.currentUser.uid);
   @override
   Widget build(BuildContext context) {
-    print("BUILD AGAIN!!!!!");
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -63,7 +59,6 @@ class HomePage extends StatelessWidget {
                                   child: CircularProgressIndicator(),
                                 );
                               }
-                              print('CAME HERE');
                               List<TaskTile> todoListTiles =
                                   myDB.taskList(snapshot.data);
                               if (todoListTiles.length == 0) {
