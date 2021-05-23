@@ -52,7 +52,6 @@ class NotifService {
             todo.reminder.hour,
             todo.reminder.minute)
         .subtract(offsetTime);
-    print(tz.local);
     await flutterLocalNotificationsPlugin.zonedSchedule(
         todo.notifID,
         'Reminder to complete your task',

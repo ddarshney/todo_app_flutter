@@ -12,7 +12,6 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Build Sign in');
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(

@@ -13,7 +13,6 @@ class DBService {
   List<TaskTile> taskList(QuerySnapshot snapshot) {
     return snapshot.docs.map((DocumentSnapshot doc) {
       if (doc.data() == null) {
-        print('NULL DATA');
         //   return Container();
       }
       TodoTask mytodo = TodoTask.fromJson(doc.data());
@@ -49,7 +48,6 @@ class DBService {
       todo = TodoTask(title: 'New Todo');
     }
     db.collection(userID).add(todo.toJson()).then((documentReference) {
-      print('${documentReference.id}');
       db
           .collection(userID)
           .doc(documentReference.id)
