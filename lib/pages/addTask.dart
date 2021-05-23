@@ -26,7 +26,7 @@ class _AddTaskState extends State<AddTask> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: Colors.white.withOpacity(0.7),
+      backgroundColor: Colors.cyan[50].withOpacity(0.7),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: SingleChildScrollView(
         child: ClipRRect(
@@ -151,7 +151,7 @@ class _AddTaskState extends State<AddTask> {
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(163, 39, 230, 1),
+                        backgroundColor: Color.fromRGBO(40, 3, 230, 1),
                       ),
                       onPressed: () async {
                         TodoTask newTodo = TodoTask(

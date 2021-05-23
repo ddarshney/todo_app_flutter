@@ -91,12 +91,12 @@ class TaskTile extends StatelessWidget {
 
 Color getColor(String category) {
   if (category == 'Personal') {
-    return Colors.blue;
+    return Colors.red[400];
   }
   if (category == 'Work') {
-    return Colors.purple;
+    return Colors.purple[400];
   }
-  return Colors.orange;
+  return Colors.blue[700];
 }
 
 Container getIconBox(String category) {
