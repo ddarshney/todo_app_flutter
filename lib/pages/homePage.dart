@@ -5,8 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/pages/addTask.dart';
+import 'package:todo_app/services/authService.dart';
 import 'package:todo_app/services/dbService.dart';
 import 'package:todo_app/widgets/taskTile.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/pages/landingPage.dart';
 
 class HomePage extends StatelessWidget {
   final DBService myDB =
@@ -14,6 +17,26 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Your Tasks',
+          style: GoogleFonts.kanit(
+              textStyle: TextStyle(
+                  color: Colors.blue[2000],
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold)),
+        ),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () async {
+                await context.read<AuthService>().signOut();
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => LandingPage()),
+                    (route) => false);
+              })
+        ],
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -35,16 +58,16 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: Column(
                       children: [
-                        Center(
-                          child: Text(
-                            'Your Tasks',
-                            style: GoogleFonts.kanit(
-                                textStyle: TextStyle(
-                                    color: Colors.blue[2000],
-                                    fontSize: 50,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        ),
+                        // Center(
+                        //   child: Text(
+                        //     'Your Tasks',
+                        //     style: GoogleFonts.kanit(
+                        //         textStyle: TextStyle(
+                        //             color: Colors.blue[2000],
+                        //             fontSize: 50,
+                        //             fontWeight: FontWeight.bold)),
+                        //   ),
+                        // ),
                         Expanded(
                           child: StreamBuilder(
                             stream: myDB.tasksSnaps,
