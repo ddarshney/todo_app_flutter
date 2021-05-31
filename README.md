@@ -25,4 +25,8 @@ $ flutter run
 ## Possible Improvements
 - [ ] Google Sign In
 - [ ] Task Filtering
+
+
 ![image](https://user-images.githubusercontent.com/68664921/120219895-8db10a80-c259-11eb-948a-00566175ab7a.png)
+![image](https://user-images.githubusercontent.com/68664921/120220029-bdf8a900-c259-11eb-89e9-35b51f31e5f0.png)
+![image](https://user-images.githubusercontent.com/68664921/120220048-c51fb700-c259-11eb-9770-698970fff3af.png)
